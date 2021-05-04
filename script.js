@@ -1,3 +1,5 @@
+const apiKey = "3ea37d87050c9b78f1465b90f9d3d261";
+
 const model = {
     movies: [],
     likedMovies: [],
@@ -116,8 +118,8 @@ const movieListClickHandler = (e) => {
         const likedMovie = model.movies.filter((movie) => String(movie.id) === movieCard.id);
         const newLikedMovie = [
             ...(model.likedMovies),
+            likedMovie[0]
         ]
-        newLikedMovie.push(likedMovie[0])
         model.likedMovies = newLikedMovie;
         updateView();
     } else if (target.className === "ion-ios-heart") {
