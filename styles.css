@@ -106,14 +106,14 @@ header img{
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1100px) {
     .movies-container .movies{
         display:grid;
         grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .movies-container .movies{
         display:grid;
         grid-template-columns:repeat(1,1fr);
@@ -132,6 +132,8 @@ header img{
 .movie-card img{
     width:100%;
     height:100%;
+    border:1px solid #ccc;
+    border-radius:10px 10px 0 0;
 }
 
 .movie-card .movie-card-text-area{
@@ -148,12 +150,17 @@ header img{
 
 .movie-card p{
     padding: 5px 10px 0px 10px;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
+}
+
+.movie-card p:hover{
+    color: #01b4e4;
+    cursor: pointer;
 }
 
 .movie-card .movie-footer{
