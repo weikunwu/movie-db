@@ -1,32 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MovieDB</title>
-    <link rel="stylesheet" href="./styles.css" />
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-  </head>
 
-  <body>
-    <header>
-      <img class = "header-logo" src="./icons/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"/>
-      <ul class = "header-tabs">
-        <li class="home-tab selected">HOME</li>
-        <li class="liked-list-tab">LIKED LIST</li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MovieDB</title>
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Lato fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic" rel="stylesheet" type="text/css">
+  <!-- ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/css/ionicons.min.css"
+      integrity="sha512-JApjWRnfonFeGBY7t4yq8SWr1A6xVYEJgO/UMIYONxaR3C9GETKUg0LharbJncEzJF5Nmiv+Pr5QNulr81LjGQ=="
+      crossorigin="anonymous" />
+</head>
+
+<body>
+  <header>
+    <img class="header-logo"
+      src="./icons/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" />
+    <ul class="header-tabs">
+      <li class="home-tab selected">HOME</li>
+      <li class="liked-list-tab">LIKED LIST</li>
       </div>
-    </header>
-    <div class="filter-container">
-      <select name="cars" id="cars">
-        <option value="Popular">Popular</option>
-        <option value="Now Playing">Now Playing</option>
-        <option value="Top Rated">Top Rated</option>
-        <option value="Upcoming">Upcoming</option>
-      </select>
+  </header>
+  <div class="filter-container">
+    <select class="filter">
+      <option value="popular">Popular</option>
+      <option value="now_playing">Now Playing</option>
+      <option value="top_rated">Top Rated</option>
+      <option value="upcoming">Upcoming</option>
+    </select>
+  </div>
+  <div class="movies-container">
+    <div class="page-banner">
+      <!-- <button id="prev-button">prev</button>
+      <p class="page-text">1/500</p>
+      <button class="show" id="next-button">next</button> -->
     </div>
-    <div class="movies-container"></div>
-    <script src="script.js"></script>
-  </body>
+    <div class="movies">
+      <!-- <div class="movie-card">
+        <img src="link"/>
+        <p>title</p>
+        <div class="movie-footer">
+          <div class="ratings">
+            <i class="ion-star"></i>
+            <span>7.5</span>
+          </div>
+          <div class="like-button">
+            <i class="ion-heart"></i>
+          </div>
+        </div> -->
+      </div>
+
+
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
