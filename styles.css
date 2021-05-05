@@ -231,3 +231,71 @@ header img{
 .liked .ion-ios-heart{
     display: block;
 }
+
+
+.overlay-container {
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    left:0;
+    top:0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(0,0,0,0.7);
+}
+
+.overlay-card{
+    display:flex;
+    flex-direction: row;
+    border: 1px solid;
+    margin:10% 20%;
+    padding: 5%;
+    background-color:white;
+    position:relative;
+}
+
+.overlay-card .text-area-container {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    padding-left: 5%;
+}
+
+.text-area-container h1 {
+    padding-bottom: 10px;
+}
+
+.text-area-container h3 {
+    padding: 10px 0px;;
+}
+
+.text-area-container .genre-container{
+    display: grid;
+    grid-template-columns:repeat(5,1fr);
+    align-items: center;
+}
+
+.text-area-container .genre-tag{
+    list-style-type: none;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color:#90cea1;
+    color: white;
+    margin-right: 10px;
+    padding:10px;
+    min-height:60px;
+    display: flex;
+    align-items: center;
+}
+
+.overlay-card .ion-close{
+    position: absolute;
+    top:0;
+    right:0;
+    margin:20px;
+    font-size:20px;
+}
+
+.overlay-card .ion-close:hover{
+    cursor: pointer;
+}

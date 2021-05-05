@@ -3,6 +3,7 @@ const apiKey = "3ea37d87050c9b78f1465b90f9d3d261";
 const model = {
     movies: [],
     likedMovies: [],
+    selectedMovie: [],
     pageNum: 0,
     totalPages: 0,
     filter: "popular",
@@ -91,6 +92,50 @@ const updateView = () => {
             movieList.append(movieCard);
         });
     }
+
+    const overlayContainer = document.querySelector(".overlay-container");
+
+    if (model.selectedMovie.length !== 0) {
+        const body = document.querySelector("body");
+        const overlay = createMovieOverlay(model.selectedMovie);
+        body.append(overlay);
+    } else if (overlayContainer) {
+        overlayContainer.remove();
+    }
+};
+
+const createMovieOverlay = (movie) => {
+    const overlayContainer = document.createElement("div");
+    overlayContainer.className = "overlay-container";
+
+    const imagePath = `${model.imageBaseURI}${model.imageSize}${movie.poster_path}`
+
+    console.log(movie);
+    const htmlTemplate = `
+        <div class="overlay-card">
+            <div class="img-container">
+                <img src="${imagePath}"/>
+            </div>
+            <div class="text-area-container">
+                <h1>${movie.title}</h1>
+                <h3>Overview</h3>
+                <p>${movie.overview}</p>
+                <h3>Genres</h3>
+                <ul class="genre-container">
+                    ${movie.genres.map((genre) => {
+        return `<li class="genre-tag">${genre.name}</li>`
+    }).join("")}
+                </ul>
+                <h3>Rating</h3>
+                <p>${movie.vote_average}</p>
+                <h3>Production Companies</h3>
+                <div class="production-company-container"></div>
+            </div>
+            <i class="ion-close"></i>
+        </div>
+    `
+    overlayContainer.innerHTML = htmlTemplate;
+    return overlayContainer;
 };
 
 const filterHandler = (e) => {
@@ -127,8 +172,21 @@ const movieListClickHandler = (e) => {
         const newLikedMovies = model.likedMovies.filter((movie) => movie.id != movieCard.id);
         model.likedMovies = newLikedMovies;
         updateView();
+    } else if (target.tagName === "P") {
+        const movieCard = target.closest(".movie-card")
+        fetchMovieById(movieCard.id)
+            .then((data) => {
+                model.selectedMovie = data;
+                updateView();
+                loadOverlayEvent();
+            })
     }
 
+};
+
+const fetchMovieById = (id) => {
+    const uri = `${model.apiBaseURI}/movie/${id}?api_key=${apiKey}&language=en-US`
+    return fetch(uri).then((resp) => resp.json());
 };
 
 const toggleSelectedTab = (tab) => {
@@ -172,7 +230,18 @@ const loadMovies = () => {
         });
 }
 
+const overlayClickHandler = (e) => {
+    const { target } = e;
+    if (target.className === "ion-close") {
+        model.selectedMovie = [];
+        updateView();
+    }
+}
 
+const loadOverlayEvent = () => {
+    const overlayCard = document.querySelector(".overlay-card");
+    overlayCard.addEventListener("click", overlayClickHandler);
+}
 
 const loadEvents = () => {
     const selectBox = document.querySelector(".filter");
@@ -186,6 +255,9 @@ const loadEvents = () => {
 
     const tabsContainer = document.querySelector(".header-tabs");
     tabsContainer.addEventListener("click", tabsClickHandler);
+
+
+
 
     fetchConfig()
         .then((data) => {
