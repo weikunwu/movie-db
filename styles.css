@@ -25,6 +25,7 @@ header {
     list-style: none;
     padding: 10px;
     font-family: 'Lato', sans-serif;
+    font-weight:100;
     font-size: 24px;
 }
 
@@ -175,7 +176,7 @@ header img{
     text-align: center;
     font-family: 'Lato', sans-serif;
     /* font-size: 17px; */
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .movie-card p:hover{
@@ -188,8 +189,9 @@ header img{
     display: flex;
     flex-direction:row;
     justify-content:space-between;
-    padding: 10px 10px 0px 10px;
-    font-size:20px;
+    align-items: center;
+    padding: 0px 10px;
+    font-size:15px;
 }
 
 .movie-card i{
@@ -199,6 +201,10 @@ header img{
 .ratings i{
     color:orange;
     /* filter: brightness(0.8); */
+}
+
+.like-button i {
+    font-size:20px;
 }
 
 .like-button .ion-ios-heart-outline{
