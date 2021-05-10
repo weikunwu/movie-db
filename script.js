@@ -122,14 +122,25 @@ const createMovieOverlay = (movie) => {
                 <p>${movie.overview}</p>
                 <h3>Genres</h3>
                 <ul class="genre-container">
-                    ${movie.genres.map((genre) => {
+    ${movie.genres.map((genre) => {
         return `<li class="genre-tag">${genre.name}</li>`
     }).join("")}
                 </ul>
                 <h3>Rating</h3>
                 <p>${movie.vote_average}</p>
                 <h3>Production Companies</h3>
-                <div class="production-company-container"></div>
+                <div class="production-company-container">
+    ${movie.production_companies
+        .filter((company) => company.logo_path !== null)
+        .map((company) => {
+            const logoPath = `${model.imageBaseURI}${model.imageSize}${company.logo_path}`
+            return `
+            <div class="logo-container">
+                <img src="${logoPath}"/>
+            </div>
+            `
+        }).join("")}            
+                </div>
             </div>
             <i class="ion-close"></i>
         </div>

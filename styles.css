@@ -299,3 +299,22 @@ header img{
 .overlay-card .ion-close:hover{
     cursor: pointer;
 }
+
+.overlay-card .production-company-container {
+    display: grid;
+    grid-template-columns:repeat(5,1fr);
+    align-items: center;
+}
+
+
+.logo-container{
+    width:50px;
+    height: 30px;
+    margin:5px 10px;
+}
+
+.logo-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
